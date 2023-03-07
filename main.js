@@ -1,29 +1,18 @@
 /* 
 METODOS  DE STRINGS:
 
-charAt()
+charCodeAt()
 
+El método charCodeAt() devuelve el Unicode del carácter en un índice especificado (posición) en una cadena.
 
-El método charAt() devuelve el carácter en un índice especificado (posición) en una cadena.
+El índice del primer carácter es 0, el segundo es 1, ....
 
-El índice del primer carácter es 0, el segundo 1, ...
- 
-(El que viene por defecto en casi de dejar el charAt() vacio, sera la posicion 0)
-Examples (En ingles este jaja):
+El índice del último carácter es la longitud de la cadena - 1
 
-    Get the first character in a string:
-    let text = "HELLO WORLD";
-    let letter = text.charAt(0);
+(Lo mismo que el charAt() pero al reves jajajajajajaajajjaajaj)
+*/
+let ejemplo = "Recargame robux";
+let posic = ejemplo.charCodeAt(4); //Aca e muestra el caracter que esta en la posicion indicada, en este caso, la "r" del medio de la palabra "Recargame"
 
-    Get the second character in a string:
-    let text = "HELLO WORLD";
-    let letter = text.charAt(1);
-
-    Get the last character in a string:
-    let text = "HELLO WORLD";
-    let letter = text.charAt(text.length-1);
- */
-
-const ejemplo = "Jesus es el mas lindo"; //(Constante porque asi es y será siempre)
-let caracter = ejemplo.charAt(6); //se muestra la "e" de la palabra "es" que le sigue a "Jesus"
-let caracter2 = ejemplo.charAt(-2); //se muestra la "d" de la palabra "lindo" ya que en negativo empieza desde la ultima de derecha a izquierda
+let ejemplo2 = "Y el incentivo";
+let posic2 = ejemplo2.charCodeAt(-3); ///Aca se muestra la ultima "i" de la palabra "Incentivo"
