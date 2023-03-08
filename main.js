@@ -1,51 +1,36 @@
 /* 
 METODOS  DE STRINGS:
 
-slice () substr() substring() split()
+toLowerCase() toUpperCase() raw()
 
-El método slice() extrae una parte de una cadena.
-El método slice() devuelve la parte extraída en una nueva cadena.
-El método slice() no cambia la cadena original.
-Los parámetros de inicio y fin especifican la parte de la cadena que se va a extraer.
-La primera posición es 0, la segunda es 1, ...
-Un número negativo selecciona desde el final de la cadena.
+El método toLowerCase() convierte una cadena en letras minúsculas.
+El método toLowerCase() no cambia la cadena original.
 
-El método substr() extrae una parte de una cadena.
-El método substr() comienza en una posición específica y devuelve un número específico de caracteres.
-El método substr() no cambia la cadena original.
-Para extraer caracteres del final de la cadena, utilice una posición inicial negativa.
+toUpperCase() convierte una cadena de letras en mayusculas.
+toUpperCase() no cambia la cadena original.
 
-El método substring() extrae caracteres, entre dos índices (posiciones), de una cadena y devuelve la subcadena.
-El método substring() extrae caracteres de principio a fin (exclusivo).
-El método substring() no cambia la cadena original.
-Si el inicio es mayor que el final, los argumentos se intercambian: (4, 1) = (1, 4).
-Los valores iniciales o finales inferiores a 0 se tratan como 0.
-
-El método split() divide una cadena en una matriz de subcadenas.
-El método split() devuelve la nueva matriz.
-El método split() no cambia la cadena original.
-Si (" ") se usa como separador, la cadena se divide entre palabras.
-
+La función de etiqueta String.raw se puede usar con literales de plantilla para acceder a una versión de su contenido sin interpretar ninguna secuencia de escape de barra invertida.
+String.raw`\n` contendrá una barra invertida y la letra n minúscula, mientras que `\n` o '\n' contendrán un solo carácter de nueva línea.
 */
-let textt = "Hello world!";
-let resultt = textt.slice(0, 5); //muestra Hello!
-let resulttt = textt.slice(3);  //muestra lo World!
+let txt = "Viva Cristo rey";
+let lower = txt.toLowerCase(); // se muestra todo en minusculas: "viva cristo rey"
 
-let text = "Hello world!";
-let result = text.substr(1, 4); //deberia mostrar ello
-let resultw = text.substr(2); //deberia mostrar llo World!
+let txto = "Viva Cristo rey";
+let upper = txto.toUpperCase(); // se muestra todo en mayusculas: "VIVA CRISTO REY"
 
-let texta = "Hello world!";
-let resulta = texta.substring(1, 4); //mustra ell
-let resultaa = texta.substring(2); // muestra llo world!
+String.raw`Hi\n${2+3}!`;
+// 'Hi\\n5!', el carácter después de 'Hi' no es un carácter de nueva línea,
+// '\' y 'n' son 2 caracteres.
 
-let texti = "How are you doing today?";
-const myArray = texti.split(" "); //divide una cadena en una array de subcadenas y devuelve la array: How,are,you,doing,today?
+String.raw`Hi\u000A!`;
+// 'Hi\\u000A!' lo mismo aquí, esta vez obtendremos el \, u, 0, 0, 0, A, 6 caracteres.}
+/* Todos los tipos de caracteres de escape serán ineficaces y las barras invertidas estarán presentes en la cadena de salida.*/
+// Puede confirmar esto comprobando la propiedad .length de la cadena.
 
-let texte = "How are you doing today?";
-const myArrayy = texte.split(" ");
-let word = myArrayy[1]; //la palabra en la posicion 1 es "are", asi que eso muestra
+let name = 'Bob';
+String.raw`Hi\n${name}!`;
+// 'Hi\\nBob!', substitutions are processed.
 
-let textu = "How are you";
-const myArraye = textu.split(""); // reemplaza espacios  How,are,you
-const myArrayee = textu.split(" ", 2); //usa el parametro de limite : How,are
+// Normalmente no llamarías a String.raw() como una función, pero puedes hacerlo:
+String.raw({ raw: 'test' }, 0, 1, 2);
+// 't0e1s2t'
